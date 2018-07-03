@@ -1,0 +1,19 @@
+{
+  "name": "kevline",
+  "version": "0.0.1",
+  "description": "A human-readable, human-writeable, single line key-value format",
+  "main": "index.js",
+  "author": "Jesse Kriss <jesse@jklabs.net>",
+  "license": "MIT",
+  "scripts": {
+    "test": "faucet"
+  },
+  "dependencies": {
+    "is-number": "^6.0.0",
+    "split-string": "^5.0.4"
+  },
+  "devDependencies": {
+    "faucet": "^0.0.1",
+    "tap": "^12.0.1"
+  }
+}
