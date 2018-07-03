@@ -16,7 +16,8 @@ const stringify = function(obj) {
   } else if (type === 'number') {
     return obj
   } else if (type === 'string') {
-    return obj.match(/["\s]/) ? JSON.stringify(obj) : obj
+    if (obj.length === 0) return '""'
+    return obj.split("").filter(c => c.match(/[a-z0-9_.-]/i)).length === obj.length ? obj : JSON.stringify(obj)
   } else {
     console.error("didn't stringify", type)
   }

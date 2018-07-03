@@ -11,4 +11,5 @@ tap.same(stringify({ list: [{a:1, b:2}, {list:[{a:3, b:4}, {a:5, b:6}]}] }), 'li
 tap.same(stringify({ pi: 3.14 }), 'pi:3.14', "Allow floats")
 tap.same(stringify({ slug: 'some-title_with-dashes' }), 'slug:some-title_with-dashes', "allow dashes and underscore in unquoted string")
 tap.same(stringify({ date: '2018-01-01' }), 'date:2018-01-01', "parse date as string")
+tap.same(stringify({ str:"" }), 'str:""', "handle empty string")
 // tap.same(parse('list:[a,b]'), { list: ["a", "b"] }, "literal lists")
