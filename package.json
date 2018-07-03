@@ -1,13 +1,15 @@
 {
   "name": "oyaml",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A human-readable, human-writeable, single line key-value format",
+  "keywords": ["yaml", "markup"],
   "main": "index.js",
   "author": "Jesse Kriss <jesse@jklabs.net>",
   "license": "MIT",
   "scripts": {
     "test": "faucet",
-    "build": "pegjs -o parse.js kevline.pegjs"
+    "build": "pegjs -o parse.js oyaml.pegjs",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
