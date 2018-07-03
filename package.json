@@ -6,14 +6,13 @@
   "author": "Jesse Kriss <jesse@jklabs.net>",
   "license": "MIT",
   "scripts": {
-    "test": "faucet"
+    "test": "faucet",
+    "build": "pegjs -o index.js kevline.pegjs"
   },
-  "dependencies": {
-    "is-number": "^6.0.0",
-    "split-string": "^5.0.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "faucet": "^0.0.1",
+    "pegjs": "^0.10.0",
     "tap": "^12.0.1"
   }
 }

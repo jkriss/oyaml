@@ -2,10 +2,6 @@
 # yarn lockfile v1
 
 
-"@sellside/emitter@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@sellside/emitter/-/emitter-1.2.1.tgz#0dd839c30cdf01087f4dc63613503da6bcdf5f1e"
-
 ajv@^5.1.0:
   version "5.5.2"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.5.2.tgz#73b5eeca3fab653e3d3f9422b341ad42205dc965"
@@ -881,10 +877,6 @@ is-number@^3.0.0:
   dependencies:
     kind-of "^3.0.2"
 
-is-number@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/is-number/-/is-number-6.0.0.tgz#e6d15ad31fc262887cccf217ae5f9316f81b1995"
-
 is-plain-object@^2.0.1, is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
@@ -1040,7 +1032,7 @@ kind-of@^5.0.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-5.1.0.tgz#729c91e2d857b7a419a1f9aa65685c4c33f5845d"
 
-kind-of@^6.0.0, kind-of@^6.0.1, kind-of@^6.0.2:
+kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
@@ -1408,6 +1400,10 @@ path-type@^1.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+pegjs@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/pegjs/-/pegjs-0.10.0.tgz#cf8bafae6eddff4b5a7efb185269eaaf4610ddbd"
+
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
@@ -1634,22 +1630,6 @@ slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
 
-snapdragon-handlers@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/snapdragon-handlers/-/snapdragon-handlers-1.0.0.tgz#9d7cb466f59625fbd54958880c6a65c64d988a1a"
-  dependencies:
-    "@sellside/emitter" "^1.2.1"
-    use "^3.1.0"
-
-snapdragon-lexer@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/snapdragon-lexer/-/snapdragon-lexer-3.1.0.tgz#d5a67fa96c17d339362fe0296c6c3f3383aabfa0"
-  dependencies:
-    kind-of "^6.0.2"
-    snapdragon-handlers "^1.0.0"
-    snapdragon-stack "^2.1.0"
-    snapdragon-token "^3.0.1"
-
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
@@ -1657,16 +1637,6 @@ snapdragon-node@^2.0.1:
     define-property "^1.0.0"
     isobject "^3.0.0"
     snapdragon-util "^3.0.1"
-
-snapdragon-stack@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/snapdragon-stack/-/snapdragon-stack-2.1.0.tgz#133cb5bca0322be94bb5e75f6dff91997f14b3a8"
-
-snapdragon-token@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/snapdragon-token/-/snapdragon-token-3.0.1.tgz#74b5000ed22aacfa4f2d259a471767a580527f4c"
-  dependencies:
-    kind-of "^6.0.1"
 
 snapdragon-util@^3.0.1:
   version "3.0.1"
@@ -1760,13 +1730,6 @@ split-string@^3.0.1, split-string@^3.0.2:
   resolved "https://registry.yarnpkg.com/split-string/-/split-string-3.1.0.tgz#7cb09dda3a86585705c64b39a6466038682e8fe2"
   dependencies:
     extend-shallow "^3.0.0"
-
-split-string@^5.0.4:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/split-string/-/split-string-5.0.4.tgz#7c9ea7190d90b70e99260c285f4558b5678e01a3"
-  dependencies:
-    arr-union "^3.1.0"
-    snapdragon-lexer "^3.1.0"
 
 sprintf-js@~1.0.2:
   version "1.0.3"
