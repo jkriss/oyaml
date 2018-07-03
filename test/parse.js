@@ -16,6 +16,8 @@ tap.same(parse('list:[a, b]'), { list: ["a", "b"] }, "literal lists")
 tap.same(parse('[a, b]'), ["a", "b"], "plain array")
 tap.same(parse('a'), "a", "single literal")
 tap.same(parse('  a '), "a", "leading and trailing whitespace is ok")
+tap.same(parse('a:true b:false'), {a: true, b: false}, "booleans")
+tap.same(parse('a:null'), {a: null}, "null")
 tap.same(parse(`hi:there
 more:"stuff with spaces"
 list:[

@@ -33,11 +33,20 @@ identifier
 
 value
   = array
+  / boolean
+  / null
   / string
 
 value_or_entries
   = entries
   / value
+  
+null
+ = "null" { return null }
+  
+boolean
+  = "true" { return true }
+  / "false" { return false }
   
 array
   = begin_array
