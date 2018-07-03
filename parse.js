@@ -173,8 +173,8 @@ function peg$parse(input, options) {
       peg$c22 = peg$literalExpectation("]", false),
       peg$c23 = ",",
       peg$c24 = peg$literalExpectation(",", false),
-      peg$c25 = /^[a-z0-9_.\-]/i,
-      peg$c26 = peg$classExpectation([["a", "z"], ["0", "9"], "_", ".", "-"], false, true),
+      peg$c25 = /^[^ ":,[\]\t\n\r]/i,
+      peg$c26 = peg$classExpectation([" ", "\"", ":", ",", "[", "]", "\t", "\n", "\r"], true, true),
       peg$c27 = function(chars) { 
           const val = chars.join("")
           const float = parseFloat(val)

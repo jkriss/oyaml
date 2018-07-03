@@ -8,7 +8,7 @@ const stringify = function(obj) {
     return obj
   } else if (type === 'string') {
     if (obj.length === 0) return '""'
-    return obj.split("").filter(c => c.match(/[a-z0-9_.-]/i)).length === obj.length ? obj : JSON.stringify(obj)
+    return obj.match(/[ ":,\[\]\t\n\r]/) ? JSON.stringify(obj) : obj
   } else if (type === 'object') {
     let parts = []
     Object.keys(obj).forEach(k => {

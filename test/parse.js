@@ -18,6 +18,7 @@ tap.same(parse('a'), "a", "single literal")
 tap.same(parse('  a '), "a", "leading and trailing whitespace is ok")
 tap.same(parse('a:true b:false'), {a: true, b: false}, "booleans")
 tap.same(parse('a:null'), {a: null}, "null")
+tap.same(parse('path:/thing?val=what%20&other=what#thung'), { path:"/thing?val=what%20&other=what#thung" }, "lenient strings")
 tap.same(parse(`hi:there
 more:"stuff with spaces"
 list:[
