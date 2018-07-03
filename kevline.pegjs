@@ -13,8 +13,8 @@ entries
 
         return result;
       }
-    )?
-    { return members !== null ? members: {}; }
+    )+
+    { return members[0]; }
 
   
 entry
