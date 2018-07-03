@@ -1,6 +1,6 @@
 {
   "name": "oyaml",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A human-readable, human-writeable, single line key-value format",
   "main": "index.js",
   "author": "Jesse Kriss <jesse@jklabs.net>",
