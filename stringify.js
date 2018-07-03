@@ -4,6 +4,11 @@ const stringify = function(obj) {
   const type = typeof obj
   if (Array.isArray(obj)) {
     return `[${obj.map(stringify).join(", ")}]`
+  } else if (type === 'number' || type === 'boolean' || obj === null || type === 'undefined') {
+    return obj
+  } else if (type === 'string') {
+    if (obj.length === 0) return '""'
+    return obj.split("").filter(c => c.match(/[a-z0-9_.-]/i)).length === obj.length ? obj : JSON.stringify(obj)
   } else if (type === 'object') {
     let parts = []
     Object.keys(obj).forEach(k => {
@@ -13,11 +18,6 @@ const stringify = function(obj) {
     })
     str += parts.join(" ")
     return str
-  } else if (type === 'number') {
-    return obj
-  } else if (type === 'string') {
-    if (obj.length === 0) return '""'
-    return obj.split("").filter(c => c.match(/[a-z0-9_.-]/i)).length === obj.length ? obj : JSON.stringify(obj)
   } else {
     console.error("didn't stringify", type)
   }
