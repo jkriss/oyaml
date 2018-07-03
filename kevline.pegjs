@@ -23,7 +23,10 @@ entries
 
   
 entry
-  = key:identifier ":" value:value { return { name:key, value:value } }
+  = key:identifier key_value_separator value:value { return { name:key, value:value } }
+
+key_value_separator
+  = ws ":" ws
   
 identifier
  = string

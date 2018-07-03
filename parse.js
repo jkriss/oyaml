@@ -152,9 +152,9 @@ function peg$parse(input, options) {
               return result;
             },
       peg$c3 = function(members) { return members[0]; },
-      peg$c4 = ":",
-      peg$c5 = peg$literalExpectation(":", false),
-      peg$c6 = function(key, value) { return { name:key, value:value } },
+      peg$c4 = function(key, value) { return { name:key, value:value } },
+      peg$c5 = ":",
+      peg$c6 = peg$literalExpectation(":", false),
       peg$c7 = function(head, v) { return v; },
       peg$c8 = function(head, tail) { return [head].concat(tail); },
       peg$c9 = function(values) { return values !== null ? values : []; },
@@ -516,18 +516,46 @@ function peg$parse(input, options) {
     s0 = peg$currPos;
     s1 = peg$parsestring();
     if (s1 !== peg$FAILED) {
-      if (input.charCodeAt(peg$currPos) === 58) {
-        s2 = peg$c4;
-        peg$currPos++;
-      } else {
-        s2 = peg$FAILED;
-        if (peg$silentFails === 0) { peg$fail(peg$c5); }
-      }
+      s2 = peg$parsekey_value_separator();
       if (s2 !== peg$FAILED) {
         s3 = peg$parsevalue();
         if (s3 !== peg$FAILED) {
           peg$savedPos = s0;
-          s1 = peg$c6(s1, s3);
+          s1 = peg$c4(s1, s3);
+          s0 = s1;
+        } else {
+          peg$currPos = s0;
+          s0 = peg$FAILED;
+        }
+      } else {
+        peg$currPos = s0;
+        s0 = peg$FAILED;
+      }
+    } else {
+      peg$currPos = s0;
+      s0 = peg$FAILED;
+    }
+
+    return s0;
+  }
+
+  function peg$parsekey_value_separator() {
+    var s0, s1, s2, s3;
+
+    s0 = peg$currPos;
+    s1 = peg$parsews();
+    if (s1 !== peg$FAILED) {
+      if (input.charCodeAt(peg$currPos) === 58) {
+        s2 = peg$c5;
+        peg$currPos++;
+      } else {
+        s2 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c6); }
+      }
+      if (s2 !== peg$FAILED) {
+        s3 = peg$parsews();
+        if (s3 !== peg$FAILED) {
+          s1 = [s1, s2, s3];
           s0 = s1;
         } else {
           peg$currPos = s0;
