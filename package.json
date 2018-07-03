@@ -1,20 +1,27 @@
 {
   "name": "oyaml",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A human-readable, human-writeable, single line key-value format",
-  "keywords": ["yaml", "markup"],
+  "keywords": [
+    "yaml",
+    "markup"
+  ],
   "main": "index.js",
   "author": "Jesse Kriss <jesse@jklabs.net>",
   "license": "MIT",
   "scripts": {
     "test": "faucet",
-    "build": "pegjs -o parse.js oyaml.pegjs",
-    "prepublishOnly": "npm run build"
+    "build": "npm run peg && npm run bundle",
+    "prepublishOnly": "npm run build",
+    "peg": "pegjs -o parse.js oyaml.pegjs",
+    "bundle": "./node_modules/.bin/poi build --module-name oyaml --format umd --filename.js oyaml.js"
   },
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.51",
     "faucet": "^0.0.1",
     "pegjs": "^0.10.0",
+    "poi": "^10.2.9",
     "tap": "^12.0.1"
   }
 }

@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>OYAML example</title>
+    <script src="../dist/oyaml.js"></script>
+    <style>
+      h3 {
+        margin-bottom: 0.2em;
+      }
+      textarea {
+        width: 400px;
+        height: 150px;
+        font-family: monospace;
+        font-size: 1em;
+        padding: 5px;
+      }
+      #error {
+        color: #b21212;
+        font-family: monospace;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+      <h3>OYAML</h3>
+      <textarea type="text" id="input">hi:there stuff:things list:[1,2]</textarea>
+      <div id="error"></div>
+      <h3>JSON</h3>
+      <pre id="result"></pre>
+      <h3>Back to OYAML</h3>
+      <pre id="oyaml"></pre>
+      <script>
+        var input = document.getElementById('input')
+        var error = document.getElementById('error')
+        var result = document.getElementById('result')
+        var oyamlEl = document.getElementById('oyaml')
+        var parseInput = function(evt) {
+          try {
+            var json = oyaml.parse(input.value)
+            result.innerText = JSON.stringify(json, null, 2)
+            oyamlEl.innerText = oyaml.stringify(json)
+            error.innerText = ""
+          } catch (err) {
+            error.innerText = err.message
+          }
+        }
+        input.addEventListener('keyup', parseInput)
+        parseInput()
+      </script>    
+  </body>
+</html>
