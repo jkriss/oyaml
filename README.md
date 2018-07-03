@@ -9,25 +9,25 @@ OYAML is a YAML-like notation syntax for objects with very flexible whitespace. 
 ## Usage
 
 ```javascript
-    const { parse, stringify } = require('oyaml')
+const { parse, stringify } = require('oyaml')
 
-    const str = 'message:hi "longer message":"Hello there!" number:4.3 list:[a, b, thing:stuff]'
-    const obj = parse(str)
-    /** 
+const str = 'message:hi "longer message":"Hello there!" number:4.3 list:[a, b, thing:stuff]'
+const obj = parse(str)
+/** 
+{
+  "message": "hi",
+  "longer message": "Hello there!",
+  "number": 4.3,
+  "list": [
+    "a",
+    "b",
     {
-      "message": "hi",
-      "longer message": "Hello there!",
-      "number": 4.3,
-      "list": [
-        "a",
-        "b",
-        {
-          "thing": "stuff"
-        }
-      ]
+      "thing": "stuff"
     }
-    **/
+  ]
+}
+**/
 
-    const oyaml = stringify(obj)
-    // message:hi "longer message":"Hello there!" number:4.3 list:[a, b, thing:stuff]
+const oyaml = stringify(obj)
+// message:hi "longer message":"Hello there!" number:4.3 list:[a, b, thing:stuff]
 ```
