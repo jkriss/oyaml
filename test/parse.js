@@ -16,3 +16,29 @@ tap.same(parse('list:[a, b]'), { list: ["a", "b"] }, "literal lists")
 tap.same(parse('[a, b]'), ["a", "b"], "plain array")
 tap.same(parse('a'), "a", "single literal")
 tap.same(parse('  a '), "a", "leading and trailing whitespace is ok")
+tap.same(parse(`hi:there
+more:"stuff with spaces"
+list:[
+  \ta,
+  thing:a 
+  what:2
+  list: [a, b, foo:2.5]
+]`),
+{
+  "hi": "there",
+  "more": "stuff with spaces",
+  "list": [
+     "a",
+     {
+        "thing": "a",
+        "what": 2,
+        "list": [
+           "a",
+           "b",
+           {
+              "foo": 2.5
+           }
+        ]
+     }
+  ]
+}, "allow newlines and tabs")

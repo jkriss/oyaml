@@ -61,7 +61,6 @@ unquoted_string
  	if (!isNaN(float) && JSON.stringify(float) === val) return float
     else return val
    }
- //= chars:[^":\[\] \t\n\r]+ { return chars.join("") }
  
 quoted_string
   = quotation_mark chars:char* quotation_mark { return chars.join(""); }
@@ -94,6 +93,6 @@ quotation_mark
   = "\""
 
 ws "whitespace"
-  = [ \t]*
+  = [ \t\n\r]*
   
 HEXDIG = [0-9a-f]i

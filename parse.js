@@ -203,8 +203,8 @@ function peg$parse(input, options) {
               },
       peg$c46 = function(sequence) { return sequence; },
       peg$c47 = peg$otherExpectation("whitespace"),
-      peg$c48 = /^[ \t]/,
-      peg$c49 = peg$classExpectation([" ", "\t"], false, false),
+      peg$c48 = /^[ \t\n\r]/,
+      peg$c49 = peg$classExpectation([" ", "\t", "\n", "\r"], false, false),
       peg$c50 = /^[0-9a-f]/i,
       peg$c51 = peg$classExpectation([["0", "9"], ["a", "f"]], false, true),
 
