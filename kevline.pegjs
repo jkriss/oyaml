@@ -1,6 +1,10 @@
+line_with_whitespace
+  = ws line:line ws { return line }
+  
 line
-  = ws? obj:entries ws? { return obj }
+  = entries
   / array
+  / value
   
 entries
   = members:(

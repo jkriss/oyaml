@@ -14,3 +14,5 @@ tap.same(parse('date:2018-01-01'), { date: '2018-01-01' }, "parse date as string
 tap.same(parse('str:""'), { str:"" }, "handle empty strings")
 tap.same(parse('list:[a, b]'), { list: ["a", "b"] }, "literal lists")
 tap.same(parse('[a, b]'), ["a", "b"], "plain array")
+tap.same(parse('a'), "a", "single literal")
+tap.same(parse('  a '), "a", "leading and trailing whitespace is ok")
