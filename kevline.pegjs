@@ -1,5 +1,6 @@
 line
   = ws? obj:entries ws? { return obj }
+  / array
   
 entries
   = members:(

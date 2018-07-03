@@ -13,3 +13,4 @@ tap.same(parse('slug:some-title_with-dashes'), { slug: 'some-title_with-dashes' 
 tap.same(parse('date:2018-01-01'), { date: '2018-01-01' }, "parse date as string")
 tap.same(parse('str:""'), { str:"" }, "handle empty strings")
 tap.same(parse('list:[a, b]'), { list: ["a", "b"] }, "literal lists")
+tap.same(parse('[a, b]'), ["a", "b"], "plain array")
