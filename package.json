@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "test": "faucet",
-    "build": "pegjs -o index.js kevline.pegjs"
+    "build": "pegjs -o parse.js kevline.pegjs"
   },
   "dependencies": {},
   "devDependencies": {

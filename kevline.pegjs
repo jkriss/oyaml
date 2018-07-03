@@ -21,11 +21,10 @@ entry
   = key:identifier ":" value:value { return { name:key, value:value } }
   
 identifier
-  = chars:[a-zA-Z0-9]+ { return chars.join("") }
+ = string
 
 value
   = array
-  / number
   / string
 
 value_or_entries
@@ -36,7 +35,6 @@ array
   = begin_array
     values:(
       head:value_or_entries
-      //head: value
       tail:(value_separator v:value_or_entries { return v; })*
       { return [head].concat(tail); }
     )?
@@ -47,16 +45,19 @@ begin_array     = ws "[" ws
 end_array       = ws "]" ws
 value_separator = ws "," ws
   
-number
-  = digits:digit+ { return parseFloat(digits.join("")) }
-
-digit
-  = [0-9]
-  
 string
   = quoted_string
-  / chars:[a-z0-9]i+ { return chars.join("") }
-  
+  / unquoted_string
+
+unquoted_string
+ = chars:[a-z0-9_.-]i+ { 
+    const val = chars.join("")
+    const float = parseFloat(val)
+ 	if (!isNaN(float) && JSON.stringify(float) === val) return float
+    else return val
+   }
+ //= chars:[^":\[\] \t\n\r]+ { return chars.join("") }
+ 
 quoted_string
   = quotation_mark chars:char* quotation_mark { return chars.join(""); }
   
@@ -91,4 +92,3 @@ ws "whitespace"
   = [ \t]*
   
 HEXDIG = [0-9a-f]i
-              
