@@ -7,7 +7,8 @@ line
   / value
   
 entries
-  = members:(
+  = begin_object?
+    members:(
       head:entry
       tail:(ws m:entry { return m; })*
       {
@@ -19,11 +20,14 @@ entries
         return result;
       }
     )+
+    end_object?
     { return members[0]; }
 
-  
+begin_object     = ws "{" ws
+end_object       = ws "}" ws
+
 entry
-  = key:identifier key_value_separator value:value { return { name:key, value:value } }
+  = key:identifier key_value_separator value:value_or_entries { return { name:key, value:value } }
 
 key_value_separator
   = ws ":" ws
@@ -67,7 +71,7 @@ string
   / unquoted_string
 
 unquoted_string
- = chars:[^ ":,\[\]\t\n\r]i+ { 
+ = chars:[^ ":,\[\]{}\t\n\r]i+ { 
     const val = chars.join("")
     const float = parseFloat(val)
  	if (!isNaN(float) && JSON.stringify(float) === val) return float
