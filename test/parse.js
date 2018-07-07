@@ -22,6 +22,7 @@ tap.same(parse('a:null'), {a: null}, "null")
 tap.same(parse('path:/thing?val=what%20&other=what#thung'), { path:"/thing?val=what%20&other=what#thung" }, "lenient strings")
 tap.same(parse('subobject:{ a:b c:d }'), { subobject: { a: 'b', c: 'd' } }, "subobjects with curly braces")
 tap.same(parse('list | of | things'), [ 'list', 'of', 'things'], "allow uncontained pipe-delimited arrays")
+tap.same(parse('first | second:"piped|value"'), ['first', { second: 'piped|value' }], "make sure quoted pipes stay in strings")
 tap.same(parse(`hi:there
 more:"stuff with spaces"
 list:[
