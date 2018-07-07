@@ -3,7 +3,11 @@ const stringify = function(obj, parentIsObject) {
   let str = ""
   const type = typeof obj
   if (Array.isArray(obj)) {
-    return `[${obj.map(o => stringify(o)).join(", ")}]`
+    if (parentIsObject) {
+      return `[${obj.map(o => stringify(o)).join(", ")}]`
+    } else {
+      return obj.map(o => stringify(o)).join(" | ")
+    }
   } else if (type === 'number' || type === 'boolean' || obj === null || type === 'undefined') {
     return obj
   } else if (type === 'string') {

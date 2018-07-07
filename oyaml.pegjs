@@ -2,11 +2,21 @@ line_with_whitespace
   = ws line:line ws { return line }
   
 line
-  = entries
+  = top_level_array
+  / array
+  / statement
+
+top_level_statement
+  = object
   / array
   / value
-  
-entries
+
+statement
+ = object
+ / array
+ / value
+ 
+object
   = begin_object?
     members:(
       head:entry
@@ -23,11 +33,11 @@ entries
     end_object?
     { return members[0]; }
 
-begin_object     = ws "{" ws
-end_object       = ws "}" ws
+begin_object     = ws [{] ws
+end_object       = ws [}] ws
 
 entry
-  = key:identifier key_value_separator value:value_or_entries { return { name:key, value:value } }
+  = key:identifier key_value_separator value:statement { return { name:key, value:value } }
 
 key_value_separator
   = ws ":" ws
@@ -36,14 +46,9 @@ identifier
  = string
 
 value
-  = array
-  / boolean
+  = boolean
   / null
   / string
-
-value_or_entries
-  = entries
-  / value
   
 null
  = "null" { return null }
@@ -54,24 +59,28 @@ boolean
   
 array
   = begin_array
-    values:(
-      head:value_or_entries
-      tail:(value_separator v:value_or_entries { return v; })*
-      { return [head].concat(tail); }
-    )?
+    values:top_level_array
     end_array
     { return values !== null ? values : []; }
-    
-begin_array     = ws "[" ws
-end_array       = ws "]" ws
-value_separator = ws "," ws
+
+top_level_array
+  = values:(
+      head:statement
+      tail:(value_separator v:statement { return v; })*
+      { return [head].concat(tail); }
+    )?
+    { return values !== null ? values : []; }
+
+begin_array     = ws [[] ws
+end_array       = ws [\]] ws
+value_separator = ws [,|] ws
   
 string
   = quoted_string
   / unquoted_string
 
 unquoted_string
- = chars:[^ ":,\[\]{}\t\n\r]i+ { 
+ = chars:[^ |()":,\[\]{}\t\n\r]i+ { 
     const val = chars.join("")
     const float = parseFloat(val)
  	if (!isNaN(float) && JSON.stringify(float) === val) return float

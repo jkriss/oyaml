@@ -14,12 +14,14 @@ tap.same(parse('date:2018-01-01'), { date: '2018-01-01' }, "parse date as string
 tap.same(parse('str:""'), { str:"" }, "handle empty strings")
 tap.same(parse('list:[a, b]'), { list: ["a", "b"] }, "literal lists")
 tap.same(parse('[a, b]'), ["a", "b"], "plain array")
+tap.same(parse('a, b'), ["a", "b"], "plain array no brackets (top level)")
 tap.same(parse('a'), "a", "single literal")
 tap.same(parse('  a '), "a", "leading and trailing whitespace is ok")
 tap.same(parse('a:true b:false'), {a: true, b: false}, "booleans")
 tap.same(parse('a:null'), {a: null}, "null")
 tap.same(parse('path:/thing?val=what%20&other=what#thung'), { path:"/thing?val=what%20&other=what#thung" }, "lenient strings")
 tap.same(parse('subobject:{ a:b c:d }'), { subobject: { a: 'b', c: 'd' } }, "subobjects with curly braces")
+tap.same(parse('list | of | things'), [ 'list', 'of', 'things'], "allow uncontained pipe-delimited arrays")
 tap.same(parse(`hi:there
 more:"stuff with spaces"
 list:[
