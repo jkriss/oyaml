@@ -1,6 +1,6 @@
 {
   "name": "oyaml",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A human-readable, human-writeable, single line key-value format",
   "keywords": [
     "yaml",
@@ -13,7 +13,7 @@
     "test": "faucet",
     "build": "npm run peg && npm run bundle",
     "prepublishOnly": "npm run build",
-    "peg": "pegjs -o parse.js oyaml.pegjs",
+    "peg": "pegjs -o parse.js oyaml.pegjs && pegjs -o parts.js parts.pegjs",
     "bundle": "./node_modules/.bin/poi build --module-name oyaml --format umd --filename.js oyaml.js"
   },
   "dependencies": {},

@@ -1,4 +1,5 @@
 const { parse } = require('./parse')
+const parts = require('./parts')
 const stringify = require('./stringify')
 
 const topLevelParse = function(str) {
@@ -9,5 +10,6 @@ const topLevelParse = function(str) {
 
 module.exports = {
   parse: topLevelParse,
+  parts: parts.parse,
   stringify
 }
