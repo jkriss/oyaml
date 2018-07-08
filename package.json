@@ -1,6 +1,6 @@
 {
   "name": "oyaml",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A human-readable, human-writeable, single line key-value format",
   "keywords": [
     "yaml",
@@ -20,6 +20,7 @@
     "bundle": "./node_modules/.bin/poi build --module-name oyaml --format umd --filename.js oyaml.js"
   },
   "dependencies": {
+    "flat": "^4.1.0",
     "strip-ansi": "^4.0.0"
   },
   "devDependencies": {

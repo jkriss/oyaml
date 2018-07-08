@@ -2,9 +2,11 @@ const { parse } = require('./parse')
 const parts = require('./parts')
 const stringify = require('./stringify')
 const stripAnsi = require('strip-ansi')
+const { unflatten } = require('flat')
 
-const topLevelParse = function(str) {
-  const result = parse(stripAnsi(str))
+const topLevelParse = function(str, opts={}) {
+  let result = parse(stripAnsi(str))
+  if (opts.unflatten !== false) result = result.map(unflatten)
   if (Array.isArray(result) && result.length === 1) return result[0]
   else return result
 }

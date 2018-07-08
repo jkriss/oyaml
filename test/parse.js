@@ -24,6 +24,8 @@ tap.same(parse('subobject:{ a:b c:d }'), { subobject: { a: 'b', c: 'd' } }, "sub
 tap.same(parse('list | of | things'), [ 'list', 'of', 'things'], "allow uncontained pipe-delimited arrays")
 tap.same(parse('first | second:"piped|value"'), ['first', { second: 'piped|value' }], "make sure quoted pipes stay in strings")
 tap.same(parse('function:stuff(hi)'), { function: 'stuff(hi)' }, "allow parentheses in unquoted strings")
+tap.same(parse('thing.one:hi'), { thing: { one: 'hi' }}, "unflatten by default")
+tap.same(parse('thing.one:hi', { unflatten: false }), { 'thing.one': 'hi' }, "don't unflatten if unflatten is false")
 tap.same(parse(`hi:there
 more:"stuff with spaces"
 list:[
