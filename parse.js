@@ -177,8 +177,8 @@ function peg$parse(input, options) {
       peg$c26 = peg$classExpectation(["]"], false, false),
       peg$c27 = /^[,|]/,
       peg$c28 = peg$classExpectation([",", "|"], false, false),
-      peg$c29 = /^[^ |()":,[\]{}\t\n\r]/i,
-      peg$c30 = peg$classExpectation([" ", "|", "(", ")", "\"", ":", ",", "[", "]", "{", "}", "\t", "\n", "\r"], true, true),
+      peg$c29 = /^[^ |":,[\]{}\t\n\r]/i,
+      peg$c30 = peg$classExpectation([" ", "|", "\"", ":", ",", "[", "]", "{", "}", "\t", "\n", "\r"], true, true),
       peg$c31 = function(chars) { 
           const val = chars.join("")
           const float = parseFloat(val)

@@ -80,7 +80,7 @@ string
   / unquoted_string
 
 unquoted_string
- = chars:[^ |()":,\[\]{}\t\n\r]i+ { 
+ = chars:[^ |":,\[\]{}\t\n\r]i+ { 
     const val = chars.join("")
     const float = parseFloat(val)
  	if (!isNaN(float) && JSON.stringify(float) === val) return float
