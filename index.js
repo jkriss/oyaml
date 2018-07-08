@@ -7,7 +7,7 @@ const { unflatten } = require('flat')
 const topLevelParse = function(str, opts={}) {
   let result = parse(stripAnsi(str))
   if (opts.unflatten !== false) result = result.map(unflatten)
-  if (Array.isArray(result) && result.length === 1) return result[0]
+  if (!opts.array && Array.isArray(result) && result.length === 1) return result[0]
   else return result
 }
 
